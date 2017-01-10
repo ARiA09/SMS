@@ -57,17 +57,19 @@ class ListStudent(object):
                   + "\nPlease input if you want to update or Enter to keep the recode")
             us_name = input("Type Student Name:\n")
 
-            us_dob = None
             print("Student DOB: " + update_student.sDoB.strftime('%m/%d/%Y')
                   + "\nPlease input if you want to update or Enter to keep the recode")
-            while us_dob is None:
+            while True:
                 input_dob = input("Type Student DOB(YYYY-MM-DD format):\n")
-            try:
-                year, month, day = map(int, input_dob.split('-'))
-                us_dob = datetime.date(year, month, day)
-            except ValueError:
-                print("Incorrect format(YYYY-MM-DD format)")
-                pass
+                if len(input_dob) > 0:
+                    try:
+                        year, month, day = map(int, input_dob.split('-'))
+                        us_dob = datetime.date(year, month, day)
+                    except ValueError:
+                        print("Incorrect format(YYYY-MM-DD format)")
+                        continue
+                    else:
+                        break
 
             print("Student Email: " + update_student.sEmail
                   + "\nPlease input if you want to update or Enter to keep the recode")
@@ -87,7 +89,7 @@ class ListStudent(object):
             if len(us_name) <= 0:
                 us_name = update_student.sName
 
-            if len(us_dob) <= 0:
+            if len(us_dob.strftime()) <= 0:
                 us_dob = update_student.sDoB
 
             if len(us_email) <= 0:
