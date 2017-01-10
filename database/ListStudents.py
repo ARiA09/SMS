@@ -89,7 +89,7 @@ class ListStudent(object):
             if len(us_name) <= 0:
                 us_name = update_student.sName
 
-            if len(us_dob.strftime()) <= 0:
+            if len(input_dob) <= 0:
                 us_dob = update_student.sDoB
 
             if len(us_email) <= 0:
@@ -101,7 +101,7 @@ class ListStudent(object):
             if len(us_address) <= 0:
                 us_address = update_student.sAddress
 
-            update_student = Students(us_id, us_name, datetime.date(us_dob), us_email, us_phone, us_address)
+            update_student = Students(us_id, us_name, us_dob, us_email, us_phone, us_address)
 
             cls.listStudent[index_student] = update_student
 
